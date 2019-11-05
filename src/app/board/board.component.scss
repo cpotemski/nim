@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  height: 100%;
+  background: lightyellow;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticks {
+  display: flex;
+}
+
+.stick {
+  position: relative;
+  width: 8px;
+  height: 150px;
+  border: 1px solid black;
+  background: #d2b389;
+  margin: 0 16px;
+
+  .stick-head {
+    position: absolute;
+    top: 0;
+    margin-left: 50%;
+    margin-top: -50%;
+    transform: translateX(-50%);
+    width: 13px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ab2836;
+    border: 1px solid black;
+  }
+
+  &:hover .stick-head, &.active .stick-head {
+    background: #f6c804;
+  }
+}

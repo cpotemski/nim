@@ -1,3 +1,5 @@
-<p>
-  board works!
-</p>
+<div class="sticks">
+  <div *ngFor="let index of countArray" class="stick" [ngClass]="{active: index < sticksHovered}">
+    <div class="stick-head"></div>
+  </div>
+</div>
