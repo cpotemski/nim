@@ -1,12 +1,12 @@
 <div class="wrapper">
   <div class="header">
-    <app-header></app-header>
+    <app-header [isPlayerActive]="isPlayerActive$ | async"></app-header>
   </div>
   <div class="board">
-    <app-board [sticks]="sticks" [sticksHovered]="sticksHovered">
+    <app-board [sticks]="sticks$ | async" [sticksHovered]="sticksHovered$ | async">
     </app-board>
   </div>
   <div class="footer">
-    <app-footer [sticks]="sticks" (changeHover)="onChangeHover($event)" (takeSticks)="onTakeSticks($event)"></app-footer>
+    <app-footer [sticks]="sticks$ | async" [isPlayerActive]="isPlayerActive$ | async" (changeHover)="onChangeHover($event)" (takeSticks)="onTakeSticks($event)"></app-footer>
   </div>
 </div>

@@ -1,5 +1,6 @@
 <div class="sticks">
-  <div *ngFor="let index of countArray" class="stick" [ngClass]="{active: index < sticksHovered}">
+  <div *ngFor="let count of countArray; let i = index" class="stick" [ngClass]="{active: i < sticksHovered}">
     <div class="stick-head"></div>
   </div>
 </div>
+<div class="counter">{{sticks}}</div>

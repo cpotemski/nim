@@ -1,12 +1,11 @@
-import { STICKS_COUNT } from '../constants'
-import { PlayersEnum } from '../models/players.enum'
+import { STICKS_COUNT, PLAYER, COMPUTER } from '../constants'
 
 export interface MyState {
   game: GameState
 }
 
 export interface GameState {
-  activePlayer: PlayersEnum
+  activePlayer: number,
   sticks: number,
   sticksHovered: number
 }

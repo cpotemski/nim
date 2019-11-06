@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex-direction: column;
   height: 100%;
   background: lightyellow;
   justify-content: center;
@@ -34,4 +35,9 @@
   &:hover .stick-head, &.active .stick-head {
     background: #f6c804;
   }
+}
+
+.counter {
+  font-size: 40px;
+  margin-top: 24px;
 }

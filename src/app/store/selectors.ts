@@ -1,7 +1,13 @@
-import { createSelector } from '@ngrx/store';
-import { GameState, MyState } from './store.model';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { GameState } from './store.model';
+import { PLAYER } from '../constants';
 
-const gameStateSelector = (state: MyState) => state.game;
+const gameStateSelector = createFeatureSelector('game');
+
+export const isPlayerActive = createSelector(
+  gameStateSelector,
+  (state: GameState) => state.activePlayer === PLAYER
+)
 
 export const getStickCount = createSelector(
   gameStateSelector,

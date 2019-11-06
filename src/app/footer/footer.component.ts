@@ -9,8 +9,10 @@ import { MIN_STICKS_PER_ROUND, MAX_STICKS_PER_ROUND } from '../constants';
 export class FooterComponent implements OnChanges {
   @Input() disabled: boolean = false;
   @Input() sticks: number;
+  @Input() isPlayerActive: boolean = false;
   @Output() changeHover: EventEmitter<number> = new EventEmitter();
   @Output() takeSticks: EventEmitter<number> = new EventEmitter();
+  @Output() restart: EventEmitter<void> = new EventEmitter();
 
   public min = MIN_STICKS_PER_ROUND;
   public max = MAX_STICKS_PER_ROUND;
@@ -19,8 +21,10 @@ export class FooterComponent implements OnChanges {
   ngOnChanges() {
     this.countArray = []
 
-    for(let count = this.min; count <= Math.min(this.max, this.sticks); count++) {
-      this.countArray.push(count);
+    if(this.sticks > 1) {
+      for(let count = this.min; count <= Math.min(this.max, this.sticks); count++) {
+        this.countArray.push(count);
+      }
     }
   }
 
@@ -34,5 +38,9 @@ export class FooterComponent implements OnChanges {
     if(!this.disabled) {
       this.takeSticks.emit(count);
     }
+  }
+
+  onRestart() {
+    this.restart.emit();
   }
 }

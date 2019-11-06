@@ -1,5 +1,21 @@
-<div class="buttons" (mouseleave)="onChangeHover()">
-  <div class="button" (click)="onTakeSticks(1)" (mouseenter)="onChangeHover(1)">Take 1</div>
-  <div class="button" (click)="onTakeSticks(2)" (mouseenter)="onChangeHover(2)">Take 2</div>
-  <div class="button" (click)="onTakeSticks(3)" (mouseenter)="onChangeHover(3)">Take 3</div>
+<div class="buttons" *ngIf="isPlayerActive" (mouseleave)="onChangeHover()">
+  Your turn:
+  <div
+    *ngFor="let count of countArray; let i = index"
+    class="button"
+    (click)="onTakeSticks(i + 1)"
+    (mouseenter)="onChangeHover(i + 1)"
+  >
+    Take {{i + 1}}
+  </div>
+  <div
+    *ngIf="sticks < 2"
+    class="button"
+    (click)="onRestart()"
+  >
+    Restart Game
+  </div>
+</div>
+<div *ngIf="!isPlayerActive">
+  Computer's Turn ... Please wait
 </div>
