@@ -1,2 +1,2 @@
-<div class="label" [ngClass]="{active: isPlayerActive}">Player</div>
-<div class="label" [ngClass]="{active: !isPlayerActive}">Computer</div>
+<div class="label" [ngClass]="{active: isPlayerActive}" (mouseenter)="easteregg('player')">{{playerLabel}}</div>
+<div class="label" [ngClass]="{active: !isPlayerActive}" (mouseenter)="easteregg('computer')">{{computerLabel}}</div>

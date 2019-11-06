@@ -1,5 +1,5 @@
-import { Component, Output, Input, EventEmitter, OnChanges } from '@angular/core';
-import { MIN_STICKS_PER_ROUND, MAX_STICKS_PER_ROUND } from '../constants';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { MAX_STICKS_PER_ROUND, MIN_STICKS_PER_ROUND } from '../constants';
 
 @Component({
   selector: 'app-footer',
@@ -10,9 +10,9 @@ export class FooterComponent implements OnChanges {
   @Input() disabled: boolean = false;
   @Input() sticks: number;
   @Input() isPlayerActive: boolean = false;
-  @Output() changeHover: EventEmitter<number> = new EventEmitter();
-  @Output() takeSticks: EventEmitter<number> = new EventEmitter();
-  @Output() restart: EventEmitter<void> = new EventEmitter();
+  @Input() winner: number;
+  @Output() changeHover: EventEmitter<number> = new EventEmitter<number>();
+  @Output() takeSticks: EventEmitter<number> = new EventEmitter<number>();
 
   public min = MIN_STICKS_PER_ROUND;
   public max = MAX_STICKS_PER_ROUND;
@@ -38,9 +38,5 @@ export class FooterComponent implements OnChanges {
     if(!this.disabled) {
       this.takeSticks.emit(count);
     }
-  }
-
-  onRestart() {
-    this.restart.emit();
   }
 }

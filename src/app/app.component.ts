@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GameState } from './store/store.model';
-import { hoverTakeButton, takeSticks } from './store/actions';
-import { getStickCount, getHoveredCount, isPlayerActive } from './store/selectors';
 import { Observable } from 'rxjs';
+import { hoverTakeButton, restartGame, takeSticks } from './store/actions';
+import { getHoveredCount, getStickCount, getWinner, isPlayerActive } from './store/selectors';
+import { GameState } from './store/store.model';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent {
   public sticks$: Observable<number> = new Observable<number>();
   public sticksHovered$: Observable<number> = new Observable<number>();
   public isPlayerActive$: Observable<boolean> = new Observable<boolean>();
+  public winner$: Observable<number> = new Observable<number>();
 
   constructor(
     private store: Store<GameState>
@@ -21,6 +22,7 @@ export class AppComponent {
     this.sticks$ = this.store.select(getStickCount);
     this.sticksHovered$ = this.store.select(getHoveredCount);
     this.isPlayerActive$ = this.store.select(isPlayerActive);
+    this.winner$ = this.store.select(getWinner);
   }
 
   onChangeHover(count: number) {
@@ -29,5 +31,9 @@ export class AppComponent {
 
   onTakeSticks(count: number) {
     this.store.dispatch(takeSticks({count}));
+  }
+
+  onRestartGame() {
+    this.store.dispatch(restartGame());
   }
 }

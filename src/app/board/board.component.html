@@ -4,3 +4,11 @@
   </div>
 </div>
 <div class="counter">{{sticks}}</div>
+<div *ngIf="winner !== undefined" class="game-end">
+  <div>
+    {{ winner === PLAYER ? 'PLAYER' : 'COMPUTER'}} WINS <br/>
+  </div>
+  <div>
+    <div class="button" (click)="restartGame.emit()">Start New Game</div>
+  </div>
+</div>

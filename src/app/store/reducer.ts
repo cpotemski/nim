@@ -1,7 +1,7 @@
-import { createReducer, Action, on } from '@ngrx/store';
-import { initialGameState, GameState } from './store.model';
-import { takeSticks, hoverTakeButton, setActivePlayer } from './actions';
-import { PLAYER, COMPUTER } from '../constants';
+import { Action, createReducer, on } from '@ngrx/store';
+import { COMPUTER, PLAYER } from '../constants';
+import { endGame, hoverTakeButton, restartGame, setActivePlayer, takeSticks } from './actions';
+import { GameState, initialGameState } from './store.model';
 
 const reducer = createReducer(
   initialGameState,
@@ -18,6 +18,16 @@ const reducer = createReducer(
   on(hoverTakeButton, (state, action) => ({
     ...state,
     sticksHovered: action.count || 0
+  })),
+  on(endGame, (state, action) => ({
+    ...state,
+    activePlayer: undefined,
+    sticksHovered: 0,
+    winner: action.winner
+  })),
+  on(restartGame, () => ({
+    ...initialGameState,
+    activePlayer: Math.round(Math.random()) === 0 ? PLAYER : COMPUTER
   }))
 );
 

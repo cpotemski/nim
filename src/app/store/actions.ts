@@ -19,3 +19,7 @@ export const endGame = createAction(
   '[Game] Game ended',
   props<{ winner: number }>()
 )
+
+export const restartGame = createAction(
+  '[Game] Restart game'
+)

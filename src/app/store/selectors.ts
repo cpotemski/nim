@@ -1,6 +1,6 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { GameState } from './store.model';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { PLAYER } from '../constants';
+import { GameState } from './store.model';
 
 const gameStateSelector = createFeatureSelector('game');
 
@@ -18,3 +18,8 @@ export const getHoveredCount = createSelector(
   gameStateSelector,
   (state: GameState) => state.sticksHovered
 );
+
+export const getWinner = createSelector(
+  gameStateSelector,
+  (state: GameState) => state.winner
+)

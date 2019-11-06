@@ -10,5 +10,7 @@
 }
 
 .header, .footer {
+  z-index: 20;
   height: 10%;
+  box-shadow: 0px 0px 2px 1px grey;
 }

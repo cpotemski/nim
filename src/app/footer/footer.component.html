@@ -1,5 +1,4 @@
-<div class="buttons" *ngIf="isPlayerActive" (mouseleave)="onChangeHover()">
-  Your turn:
+<div class="buttons" *ngIf="isPlayerActive && winner === undefined" (mouseleave)="onChangeHover()">
   <div
     *ngFor="let count of countArray; let i = index"
     class="button"
@@ -8,14 +7,7 @@
   >
     Take {{i + 1}}
   </div>
-  <div
-    *ngIf="sticks < 2"
-    class="button"
-    (click)="onRestart()"
-  >
-    Restart Game
-  </div>
 </div>
-<div *ngIf="!isPlayerActive">
-  Computer's Turn ... Please wait
+<div *ngIf="!isPlayerActive && winner === undefined">
+  Computer makes his move ... Please wait
 </div>

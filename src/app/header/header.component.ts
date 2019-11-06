@@ -7,4 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent{
   @Input() isPlayerActive: boolean = false;
+  public playerLabel: string = 'Player';
+  public computerLabel: string = 'Computer';
+
+  easteregg(who: string) {
+    console.log('active');
+    if(who === 'player') {
+      this.playerLabel = this.playerLabel.replace('e', '3');
+    } else if(who === 'computer') {
+      this.computerLabel = 'Chris';
+    }
+  }
 }
